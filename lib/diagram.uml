@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="51.5" y="-36.5">com</node>
+    <node x="3919.0" y="-36.5">App</node>
+    <node x="3720.5" y="-36.5">images</node>
+    <node x="3513.5" y="-36.5">netscape</node>
+    <node x="3359.5" y="-36.5">ru</node>
+    <node x="3194.5" y="-36.5">org</node>
+    <node x="2879.5" y="-36.5">toolbarButtonGraphics</node>
+    <node x="2714.0" y="-36.5">sun</node>
+    <node x="2487.5" y="-36.5">pokemons</node>
+    <node x="2316.5" y="-36.5">jdk</node>
+    <node x="2091.0" y="-36.5">META-INF</node>
+    <node x="1825.5" y="-36.5">groovyjarjarasm</node>
+    <node x="1653.0" y="-36.5">java</node>
+    <node x="1461.5" y="-36.5">groovy</node>
+    <node x="1288.5" y="-36.5">javax</node>
+    <node x="1103.0" y="-36.5">moves</node>
+    <node x="817.5" y="-36.5">groovyjarjarpicocli</node>
+    <node x="495.5" y="-36.5">groovyjarjarcommonscli</node>
+    <node x="223.5" y="-36.5">groovyjarjarantlr</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="0.35113350125944587" showDependencies="false" x="2025.9999999999998" y="-20.0" />
+  <SelectedNodes>
+    <node>groovyjarjarpicocli</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>protected</VISIBILITY>
+</Diagram>
+
