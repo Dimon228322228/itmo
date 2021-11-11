@@ -83,7 +83,7 @@ def calculate_cubes(cube, cube_number):
         return unused_terms
 
     print_cube(next_cube, cube_number + 1)
-    return calculate_cubes(next_cube, cube_number + 1)
+    return calculate_cubes(next_cube, cube_number + 1) + unused_terms
 
 
 def print_cube(cube, cube_number):
