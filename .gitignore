@@ -5,17 +5,16 @@
 *.[oa]
 *~
 .*
-secrets.yaml
-secrets.txt
-venv/
-env/
-npm*/
-node_modules/
-__pycache__/
-bin/
-build/
-target/
+!/*.tex
 !/.gitignore
+!title.tex
+private.tex
+
+##   		LaTeX files:
+## Core latex/pdflatex auxiliary files:
+# tex_out/
+# *.tex
+
 
 ##   	Java files
 # Compiled class file
@@ -34,10 +33,6 @@ target/
 *.rar
 
 
-##   		LaTeX files:
-## Core latex/pdflatex auxiliary files:
-tex_out/
-*.tex
 
 *.aux
 *.lof
