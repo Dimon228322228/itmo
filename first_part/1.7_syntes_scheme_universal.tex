@@ -1,0 +1,32 @@
+\begin{center}
+  \textbf{Базис(ИЛИ-НЕ)}
+\end{center}
+
+Приведение аналитического выражения (2) к базису (ИЛИ-НЕ) осуществляется заменой операций булева базиса на операцию стрелка Пирса (отрицание дизъюнкции) путем использования законов двойственности. 
+
+$
+\phi = \nx{2}\nx{3}= \overline{\overline{\nx{2}\nx{3}}}= \overline{\pirs{\nx{2}}{\nx{3}}} \rightarrow \nphi = \pirs{\nx{2}}{\nx{3}} 
+$
+
+\begin{align*}
+f &= (\x{1}\vee\x{3}\vee\nx{2}\x{4})(\nx{1}\vee(\x{5}\vee\x{4}\nphi)(\nx{3} \vee \nx{4} \vee \phi)) = \\
+  &=\neg{ \x{1}\vee\x{3}\vee \neg{\x{2}\vee\nx{4}} }
+    \vee
+    \neg{
+      \nx{1} \vee
+      \neg{ \x{5} \vee \neg{\nx{4}\vee\phi}} \vee
+      \neg{ \nx{3} \vee \nx{4} \vee \phi   }
+    } = \\
+  &=(\x{1}\downarrow\x{3}\downarrow (\x{2}\downarrow\nx{4}))
+    \downarrow
+    (\nx{1} \downarrow
+      (\x{5} \downarrow (\nx{4}\downarrow\phi)) 
+      \downarrow
+      (\nx{3} \downarrow \nx{4} \downarrow \phi)
+    )
+\end{align*}
+
+По полученному выражению строим схему с парафазными входами в базисе (ИЛИ-НЕ):
+% \begin{center}
+% \includegraphics[width=\linewidth]{imgs/circuit-ornot_basis.png}
+% \end{center}
