@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 
 
+\usepackage{float}
 \usepackage{array}   % for \newcolumntype macro
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
 
@@ -30,30 +31,10 @@
 
 % ГОСТ
 \def\capfigure{figure}
-% \def\captable{table}
-% \long\def\@makecaption#1#2{%
-%   \vskip\abovecaptionskip
-%   \ifx\@captype\capfigure
-%       \centering #1~--~#2 \par
-%   \else
-%       #1~--~#2 \par
-%   \fi
-%   \vskip\belowcaptionskip}
 
 \addto\captionsrussian{ 
 \def\figurename{Рис.} 
 }
-
-% \addto\captionsrussian{ 
-% \def\tablename{Таблица}
-% }
-
-% \captionsetup[figure]{%
-% labelsep=dash,justification=centering,singlelinecheck=false,%
-% aboveskip=0mm,belowskip=3mm}
-% \DeclareCaptionLabelSeparator{defffis}{ - }
-% \captionsetup{justification=centering,labelsep=defffis}
-
 \makeatother
 
 \newcommand{\nx}[1]{\neg{x}_{#1}}
@@ -95,5 +76,23 @@
 \input{first_part/1.7_syntes_scheme_universal.tex}
 \subsection{Анализ многовыходной комбинационной схемы}
 \input{first_part/1.8_scheme_analis.tex}
+\pagebreak
+
+\section{Вторая часть. Вариант 58}
+
+\subsection{Составление таблицы истинности}
+\input{second_part/2.1_truth_table.tex}
+\subsection{Минимизация булевых функций системы}
+\input{second_part/2.2_carno_minimalization.tex}
+
+\subsection{Преобразование минимальных форм булевых функций системы}
+\input{second_part/2.3_minimal_forms_transform.tex}
+
+\subsection{Синтез многовыходной комбинационной схемы в булевом базисе}
+\input{second_part/2.4_syntes_scheme_boolean.tex}
+
+\subsection{Анализ многовыходной комбинационной схемы}
+\input{second_part/2.5_scheme_analis.tex}
+
 
 \end{document}
