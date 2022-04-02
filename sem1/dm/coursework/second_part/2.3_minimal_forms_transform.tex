@@ -1,0 +1,32 @@
+Решим задачу факторизации. \\
+$
+C_1 = \nx{1}\nx{2}\nx{3}\nx{4}\nx{5} \vee \x{1}(\x{2}\vee\x{3}\vee\x{4}\vee\x{5}) \hspace{0.5cm} (S_Q = 13) \\
+\
+C_2 = \nx{2}\nx{3}\nx{4}\nx{5}\vee\x{2}(\x{3}\vee\x{4})\vee\x{3}\x{5} \hspace{0.5cm} (S_Q = 13) \\
+\
+C_3 = \nx{3}\nx{4}\nx{5}(\x{1}\vee\x{2}) \vee \x{3}(\x{5}\vee\x{4}) \hspace{0.5cm} (S_Q = 12) \\
+\
+C_4 = \nx{4}\nx{5}\vee\x{4}\x{5} \hspace{0.5cm} (S_Q = 6) \\
+\
+C_5 = \nx{5}(\x{4}\vee\x{1}\vee\x{2}\vee\x{3}) \hspace{0.5cm} (S_Q = 6) \\\\
+$
+
+Цена уменьшилась: $S_Q=50$ \\\\
+Решим задачу факторизации применительно ко всем функциям системы, выделяя общие части и обозначая их как дополнительные функции: \\
+\begin{equation*}
+\begin{cases}
+y_1 = \nx{2}\nx{3} \hspace{0.5cm} (S^{y_1}_Q = 2) \\
+z_1 = \nx{4}\nx{5} \hspace{0.5cm} (S^{z_1}_Q = 2) \\
+\\
+C_1 = \nx{1}y_1 z_1 \vee \x{1}(\neg{y_1}\vee\neg{z_1}) \hspace{0.5cm} (S^{C_1}_Q = 9) \\
+\
+C_2 = y_1 z_1\vee\x{2}(\x{3}\vee\x{4})\vee\x{3}\x{5} \hspace{0.5cm} (S^{C_2}_Q = 11) \\
+\
+C_3 = \nx{3}z_1(\x{1}\vee\x{2}) \vee \x{3}\neg{z_1} \hspace{0.5cm} (S^{C_3}_Q = 9) \\
+\
+C_4 = z_1\vee\x{4}\x{5} \hspace{0.5cm} (S^{C_4}_Q = 4) \\
+\
+C_5 = \nx{5}(\x{4}\vee\x{1}\vee\neg{y_1}) \hspace{0.5cm} (S^{C_5}_Q = 5) \\\\
+\end{cases}
+\end{equation*}
+Суммарная цена схемы: $S_Q=42$ \\\\

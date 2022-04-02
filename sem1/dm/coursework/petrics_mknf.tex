@@ -1,0 +1,21 @@
+МКНФ : $ Y = \
+(A \vee B) (C \vee G) (D \vee E) (F \vee H) (A \vee C) (A \vee B \vee D \vee E) (C \vee D) (B \vee F) (G \vee H) (E \vee F) (A \vee C \vee D) (B \vee E \vee F)
+$ \\
+
+$ Y = \
+(A \vee B) (C \vee G) (D \vee E) (F \vee H) (A \vee C) (C \vee D) (B \vee F) (G \vee H) (E \vee F) 
+$
+
+$ Y = \
+ACEFG \vee ADF \vee ABDEGH \vee BCEFG \vee CEH \vee BCDFG \vee BCDFH \
+$
+
+% (A∨B)(A∨C) (C∨G)(C∨D) (D∨E)(E∨F) (F∨H)(B∨F) (G∨H)
+
+% (Av(BC))(Cv(GD))(Ev(DF))(Fv(HB))(GvH)
+% (ACvAGDvBCCvBCGD) (EFvEHBvDFFvDFHB) (GvH)
+% (ACvAGDvBCCvBCGD) (EFGvEHBGvDFFGvDFHBGvEFHvEHBHvDFFHvDFHBH)
+% (AC v AGD v BC) (EFG v DFG v EFH v EBH v DFH)
+% ACEFG v ACDFG v ACEFH v ACEBH v ACDFH v AGDEFG v AGDDFG v AGDEFH v AGDEBH v AGDDFH v BCEFG v BCDFG v BCEFH v BCEBH v BCDFH
+
+% ACEFG v ADF v ABDEGH v BCEFG v CEH v BCDFG v BCDFH

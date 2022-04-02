@@ -1,0 +1,98 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{forest} 
+
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\usepackage{amsmath}
+
+
+\usepackage{float}
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+
+\usepackage[hidelinks]{hyperref} 
+
+% Poles settings:
+\usepackage[left=15mm, top=10mm, right=15mm, bottom=10mm, head=5mm, foot=9mm]{geometry}
+
+\usepackage{fontspec}
+\setmainfont{FreeSerif}
+\setsansfont{FreeSans}
+\setmonofont{FreeMono}
+
+% Polyglossia:
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\newfontfamily\cyrillicfont{FreeSerif}[Script=Cyrillic]
+
+% ГОСТ
+\def\capfigure{figure}
+
+\addto\captionsrussian{ 
+\def\figurename{Рис.} 
+}
+\makeatother
+
+\newcommand{\nx}[1]{\neg{x}_{#1}}
+\newcommand{\x}[1]{x_{#1}}
+\newcommand{\nphi}[0]{\overline{\varphi}}
+\newcommand{\pirs}[2]{#1\downarrow#2}
+\renewcommand{\phi}[0]{\varphi}
+\renewcommand{\neg}[1]{\overline{#1}}
+
+
+\begin{document}
+\input{title}
+
+\tableofcontents
+\vspace{2em}
+\pagebreak{}
+
+\section{Первая часть}
+% 1.2. Представление булевой функции в аналитическом виде
+% 1.3. Минимизация булевой функции методом Квайна–МакКласки
+% 1.4. Минимизация булевой функции на картах Карно
+% 1.5. Преобразование минимальных форм булевой функции
+% 1.6. Синтез комбинационных схем в булевом базисе
+% 1.7. Синтез комбинационных схем в универсальных базисах
+
+\subsection{Составление таблицы истинности}
+\input{first_part/1.1_truth_table.tex}
+\subsection{Представление булевой функции в аналитическом виде}
+\input{first_part/1.2_functions_analit.tex}
+\subsection{Минимизация булевой функции методом Квайна–МакКласки}
+\input{first_part/1.3_mak_klasski_table.tex}
+\subsection{Минимизация булевой функции на картах Карно}
+\input{first_part/1.4_carno_maps.tex}
+\subsection{Преобразование минимальных форм булевой функции}
+\input{first_part/1.5_minimal_forms_transform.tex}
+\subsection{Синтез комбинационных схем в булевом базисе}
+\input{first_part/1.6_syntes_scheme_boolean.tex}
+\subsection{Синтез комбинационных схем в универсальных базисах}
+\input{first_part/1.7_syntes_scheme_universal.tex}
+\subsection{Анализ многовыходной комбинационной схемы}
+\input{first_part/1.8_scheme_analis.tex}
+\pagebreak
+
+\section{Вторая часть. Вариант 58}
+
+\subsection{Составление таблицы истинности}
+\input{second_part/2.1_truth_table.tex}
+\subsection{Минимизация булевых функций системы}
+\input{second_part/2.2_carno_minimalization.tex}
+
+\subsection{Преобразование минимальных форм булевых функций системы}
+\input{second_part/2.3_minimal_forms_transform.tex}
+
+\subsection{Синтез многовыходной комбинационной схемы в булевом базисе}
+\input{second_part/2.4_syntes_scheme_boolean.tex}
+
+\subsection{Анализ многовыходной комбинационной схемы}
+\input{second_part/2.5_scheme_analis.tex}
+
+
+\end{document}

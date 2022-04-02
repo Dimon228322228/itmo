@@ -1,0 +1,38 @@
+\textbf{Факторное преобразование для МДНФ:}
+
+МДНФ : $ f = \
+\nx{1}\x{3} \vee \
+\x{3}\nx{4} \vee \
+\nx{2}\x{3}\nx{5} \vee \
+\nx{1}\nx{2}\nx{4}\nx{5} \vee \
+\x{1}\nx{3}\x{4}\x{5}  \vee \
+\x{1}\x{2}\nx{3}\x{4} \hspace{0.5cm} (S_Q = 25) \\ \   % Sq = 25
+=  \
+\x{3}(\nx{1} \vee \nx{4}) \vee \nx{2}\nx{5}(\x{3} \vee \nx{1}\nx{4}) \vee \ 
+\x{1}\nx{3}\x{4}(\x{5} \vee \x{2})  \hspace{0.5cm} (S_Q = 20)
+$
+% 4 + (3+4) + (4 + 2)    + 3 = Sq = 20
+\\
+
+\textbf{Факторное преобразование для МКНФ:}
+
+МКНФ : $f = \ 
+(\x{1} \vee \nx{2} \vee \x{3}) \cdot \
+(\x{3} \vee \x{4} \vee \nx{5}) \cdot \
+(\x{1} \vee \x{3} \vee \nx{4}) \cdot \
+(\nx{1} \vee \x{4} \vee \x{5}) \cdot \
+(\nx{1} \vee \nx{3} \vee \nx{4} \vee \nx{5}) \cdot \
+(\nx{1} \vee \x{2} \vee \x{3} \vee \x{5})\cdot \
+(\nx{1} \vee \nx{2} \vee \nx{3} \vee \nx{4}) \hspace{0.5cm} (S_Q = 31)\\ \  % Sq = 31
+= \
+(\x{1}\vee\x{3}\vee\nx{2}\x{4})(\nx{1}\vee(\x{5}\vee(\x{4}(\x{2}\vee\x{3})))(\nx{3}\vee\nx{4}\vee\nx{2}\nx{3})) \hspace{0.5cm} (S_Q = 24)
+$  % Sq = 24
+\\
+
+\par Решим задачу  декомпозиции  применительно  к  полученной  форме. 
+Для этого введем вспомогательную функцию:
+
+$
+\phi = \phi(\x{2},\x{3})= \nx{2}\nx{3} \rightarrow \nphi = \x{2} \vee \x{3} \\
+f = (\x{1}\vee\x{3}\vee\nx{2}\x{4})(\nx{1}\vee(\x{5}\vee\x{4}\nphi)(\nx{3} \vee \nx{4} \vee \phi)) \hspace{0.5cm} (S_Q = 21)(2)
+$
