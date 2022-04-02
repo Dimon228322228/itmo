@@ -1,0 +1,47 @@
+\newcommand{\ra}{\rightarrow}
+\newcommand{\tb}{\textbf}
+\definecolor{gray}{rgb}{0.8,0.8,0.8}
+
+% \begin{pycode}
+% import tex_table
+% table = tex_table.get_table(latex=True)
+% \end{pycode}
+
+\renewcommand{\hline}{\noalign{\hrule height 1.2pt}}
+\begin{table}[H]
+  \small
+  \centering
+  % \begin{tabular}{>{\setlength\hsize{.5\hsize}} X >{\setlength\hsize{1.5\hsize}} X}
+  \rowcolors{15}{gray}{gray}
+  \begin{tabular}{|r*{6}{|l}}
+  \hline
+№  & Адрес & Команда & Мнемоника   & Комментарий \\ \hline
+1  & 359   &036E     & X1          & Адрес начала массива \\ \hline
+2  & 35A   &0200     & X2          & Адрес текущего элемента \\ \hline
+3  & 35B   &4000     & M           & Длина массива \\ \hline
+4  & 35C   &0200     & R           & Результат программы \\ \hline
+5  & 35D   &0200     & CLA         & \multirow{2}{*}{очистка результата} \\ \cline{1-4}
+6  & 35E   &EEFD     & ST R   & \\ \hline
+7  & 35F   &AF05     & LD \#5      & \multirow{2}{*}{Загрузка длины массива} \\ \cline{1-4}
+8  & 360   &EEFA     & ST M   & \\ \hline
+9  & 361   &4EF7     & ADD X1  & \\ \cline{1-4}
+10 & 362   &EEF7     & ST X2   & \multirow{-2}{*}{Установка адреса текущего элемента + 1} \\ \hline
+11 & 363   &ABF6     & LD (X2)- & Загрузка элемента из массива с декрементом\\ \hline
+12 & 364   &0480     & ROR         & Деление на 2 с остатком \\ \hline
+13 & 365   &F405     & BHIS IP+5   & continue, если не делится на 2\\ \hline
+14 & 366   &0480     & ROR         & Деление ещё на 2 с остатком \\ \hline
+15 & 367   &F403     & BHIS IP+3   & continue, если не делится на 2\\ \hline
+16 & 368   &0400     & ROL         & \\ \hline
+17 & 369   &0400     & ROL         & \\ \hline
+18 & 36A   &AAF1     & LD (R)+ & Увеличение результата на 1\\ \hline
+19 & 36B   &835B     & LOOP \$35B  & \\ \cline{1-4}
+20 & 36C   &CEF6     & JUMP (IP-10)& \multirow{-2}{*}{Остаёмся в цикле, если ещё есть элементы} \\ \hline
+\hiderowcolors
+21 & 36D   &0100     & HLT         & Останов\\ \hline
+22 & 36E   &8369     & Y1          & Элемент массива\\ \hline
+23 & 36F   &CE00     & Y2          & Элемент массива\\ \hline
+24 & 370   &0003     & Y3          & Элемент массива\\ \hline
+25 & 371   &F200     & Y4          & Элемент массива\\ \hline
+26 & 372   &F201     & Y5          & Элемент массива \\\hline
+  \end{tabular}
+\end{table}

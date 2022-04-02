@@ -1,0 +1,73 @@
+\documentclass[a4paper, 11pt]{article}
+
+% Packages
+% \usepackage[T2A]{fontenc}
+
+% tables
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage{makecell}
+\usepackage{float} % fix table position
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{tabularx}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+\usepackage{indentfirst}
+
+% links
+\usepackage[hidelinks]{hyperref} 
+
+% 2 columns
+\usepackage{paracol}
+% tables
+\usepackage{multirow}
+
+% python 
+% \usepackage{pythontex}
+% \setpythontexworkingdir{../utils}
+% \setpythontexoutputdir{tex_out}
+
+% Poles settings:
+\usepackage[left=30mm, top=10mm, right=20mm, bottom=10mm, head=5mm, foot=9mm]{geometry}
+
+\usepackage{fontspec}
+\setmainfont{FreeSerif}
+\setsansfont{FreeSans}
+\setmonofont{FreeMono}
+
+%% Polyglossia:
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\newfontfamily\cyrillicfont{FreeSerif}[Script=Cyrillic, Ligatures=TeX]
+
+\begin{document}
+\input{title}
+
+\tableofcontents
+\vspace{2em}
+\pagebreak{}
+
+\section{Текст задания}
+\input{task_text.tex}
+
+\section{Исходная программа}
+\input{task_commands_table.tex}
+
+\section{Описание программы}
+\input{program_description.tex}
+
+
+
+\section{Таблица трассировки}
+\input{tracing_table.tex}
+
+\section{Вывод}
+\input{conclusions}
+
+\end{document}

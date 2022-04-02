@@ -1,0 +1,19 @@
+\renewcommand{\ra}{\rightarrow}
+\renewcommand{\tb}{\textbf}
+\begin{table}[H]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+№  & \tb{Адрес}&\tb{Команда}&\tb{Мнемоника}& \tb{Описание} & \tb{Наименование} \\ \hline \cellcolor{gray!25}  \
+1 & 022    &  A02E     & LD 2E         & 27 $\ra$ AC          & Загрузка \\ \hline 
+2 & 023    &  2022     & AND 22        & 28 \& AC $\ra$ AC    & Логическое умножение \\ \hline
+3 & 024    &  602B     & SUB 2B        & AC - 29 $\ra$ AC     & Вычитание \\ \hline
+4 & 025    &  E02D     & ST 2D         &  AC $\ra$ 2D         & Сохранение \\ \hline \cellcolor{gray!25}  \
+5 & 026    &  0100     & HLT           & Отключение ТГ(пульт) & Остановка \\ \hline 
+7 & 027    &  0100     &               &  0100$_{16}$ (256)          & число \\ \hline
+6 & 028    &  E02C     &               &  E02C$_{16}$ (-8148) & число \\ \hline 
+8 & 029    &  0100     &               &  0100$_{16}$ (256)          & число \\ \hline
+9 & 030    &  A02E     &               &                         & результат \\ \hline
+  \end{tabular}
+\end{table}
