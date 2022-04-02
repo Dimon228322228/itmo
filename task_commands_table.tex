@@ -1,0 +1,65 @@
+\newcommand{\ra}{\rightarrow}
+\newcommand{\tb}{\textbf}
+\definecolor{gray}{rgb}{0.8,0.8,0.8}
+
+\renewcommand{\hline}{\noalign{\hrule height 1.2pt}}
+\begin{table}[H]
+  \small
+  \centering
+  \begin{tabular}{|r*{6}{|l}}
+  \hline
+№   & Адрес & Команда & Мнемоника       & Комментарий \\ \hline
+1   &  1EE  & +0200   & CLA             & очистка результата \\ \hline
+2   &  1EF  & EE19    & ST (R)      &  \\ \hline
+3   &  1F0  & AE17    & LD (X)      &  \\ \hline
+4   &  1F1  & 0C00    & PUSH            &  отправляем X на стек \\ \hline
+5   &  1F2  & D6F2    & CALL 6F2        &  вызов подпрограммы \\ \hline
+6   &  1F3  & 0800    & POP             &  получение числа со стека \\ \hline
+7   &  1F4  & 0700    & INC             &  инкремент числа \\ \hline
+8   &  1F5  & 4E13    & ADD (R)     &    \\ \hline
+9   &  1F6  & EE12    & ST (R)      &  Сохранить сумму результата и R \\ \hline
+10  &  1F7  & AE0F    & LD (Y)      &   \\ \hline
+11  &  1F8  & 0C00    & PUSH            & отправляем Y на стек \\ \hline
+12  &  1F9  & D6F2    & CALL 6F2        &  вызов подпрограммы \\ \hline
+13  &  1FA  & 0800    & POP             &  получение числа со стека \\ \hline
+14  &  1FB  & 0740    & DEC             &  декремент числа \\ \hline
+15  &  1FC  & 6E0C    & SUB (R)     &  \\ \hline
+16  &  1FD  & EE0B    & ST (R)      &  Сохранить Число - R в R \\ \hline
+17  &  1FE  & AE07    & LD (Z)      &  \\ \hline
+18  &  1FF  & 0C00    & PUSH         & отправляем Z на стек \\ \hline
+19  &  200  & D6F2    & CALL 6F2     & вызов подпрограммы \\ \hline
+20  &  201  & 0800    & POP          & получение числа со стека \\ \hline
+21  &  202  & 0700    & INC          & инкремент числа \\ \hline
+22  &  203  & 6E05    & SUB (R)      &  \\ \hline
+23  &  204  & EE04    & ST (R)       & Сохранить Число - R в R \\ \hline
+24  &  205  & 0100    & HLT          & останов \\ \hline
+25  &  206  & ZZZZ    & Z           &  \\ \hline
+26  &  207  & YYYY    & Y           &  \\ \hline
+27  &  208  & XXXX    & X           &  \\ \hline
+28  &  209  & F4C0    & R            & \\ \hline
+\hline\hline
+1   &  6F2 & AC01 & LD   (SP+1)  & загрузка аргумента \\ \hline
+2   &  6F3 & F001 & BEQ  (IP+1)  & если =0, то переход на вычитание А \\ \hline
+3   &  6F4 & F304 & BPL  (IP+4)  & если >0, то переход на умножение \\ \hline
+4   &  6F5 & 6E0A & SUB  (IP+10) & вычитаем A \\ \hline
+5   &  6F6 & F201 & BMI  (IP+1)  & если <0, то пропуск следующего шага \\ \hline
+6   &  6F7 & CE05 & JUMP (IP+5)  & на LD \\ \hline
+7   &  6F8 & 4E07 & ADD  (IP+7)  & прибавление константы A \\ \hline
+8   &  6F9 & 0500 & ASL          & умножение на 2 \\ \hline
+9   &  6FA & 4C01 & ADD  (SP+1)  & прибавление аргумента \\ \hline
+10  &  6FB & 4E05 & ADD  (IP+5)  & прибавление константы B \\ \hline
+11  &  6FC & CE01 & JUMP (IP+1)  & переход на сохранение результата \\ \hline
+12  &  6FD & AE02 & LD   (IP+2)  & загрузка A \\ \hline
+13  &  6FE & EC01 & ST   (SP+1)  & сохранение результата \\ \hline
+14  &  6FF & 0A00 & RET  &         Возврат \\ \hline
+15  &  700 & F4BD & A    &        -2883 \\ \hline
+16  &  701 & 007A & B    &        122 \\ \hline
+  \end{tabular}
+\end{table}
+% if x > 0 or x < A:
+%     return x*3+B
+
+% if x <= 0 and x < A
+
+% if A <= x <= 0:
+%   return A

@@ -1,0 +1,26 @@
+%!tex root=../report.tex
+
+\noindent%
+Подпрограмма для вычисления суммы чисел от 1 до N. \\
+Принимает N. Возвращает $\sum_{n=1}^{N} n$, если N < 1, возвращает 0.
+
+\begin{paracol}{2}
+\inputminted{nasm}{dop/sumToN.asm}
+\switchcolumn%
+\center{
+Подпрограмма: \\
+{\addfontfeatures{LetterSpace=7}
+\begin{NiceTabular}{*{2}{c}}[hvlines]
+  Адр. & Знач.\\
+  000A & 0200 \\
+  000B & 4C01 \\
+  000C & 8C01 \\
+  000D & CEFD \\
+  000E & F301 \\
+  000F & 0200 \\
+  0010 & EC01 \\
+  0011 & 0A00 \\
+\end{NiceTabular}
+}}
+  
+\end{paracol}

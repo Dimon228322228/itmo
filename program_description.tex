@@ -1,0 +1,271 @@
+%!Tex Root=../report.tex
+\newcommand\maxSign{2^{15}-1}
+\newcommand\minSign{-2^{15}}
+\newcommand\aConst{-2883}
+\newcommand\bConst{122}
+\newcommand\minToConstInterv{[\minSign; \aConst)}
+\newcommand\constInterval{[\aConst; 0]}
+\newcommand\zeroToMax{(0;\maxSign]}
+
+\subsection{Назначение программы}
+Программа реализует функцию:
+\begin{align*}
+    R &= (f(Z) + 1) - (f(Y) - 1) + (f(X) + 1) \\
+      &= f(Z) - f(Y) + f(X) + 3
+\end{align*}
+
+
+Подпрограмма реализует функцию:
+\begin{equation*}
+f(x) =
+\begin{cases}
+    x \cdot 3 + B & \text{if } x > 0 \text{ or } x < -2883_{10} \\
+    -2883_{10} &         \text{if } -2883_{10} \le x \le 0
+\end{cases}
+\end{equation*}
+
+% \subsection{Расположение в памяти БЭВМ программы, исходных данных и результатов}
+% \begin{itemize}
+%     \item 206-208 --- переменные
+%     \item 209 --- результат
+%     \item 700 --- константа A
+%     \item 701 --- константа B
+% \end{itemize}
+
+% \subsection{Область представления данных}
+% A, B, $X$, $Y$, $Z$, R – целые знаковые шестнадцатеричные числа
+
+% \subsection{Область допустимых значений}
+% % A = F4BD$_16$ = $-2883_{10}$ \\
+% % B = 007A$_16$ = $122_{10}$ \\
+% % \\
+% Результат: $\minSign \le R \le \maxSign$ \\
+% $\minSign \le (f(Z) + 1) - (f(Y) - 1) + (f(X) + 1) \le \maxSign$
+% \begin{flalign*}
+%     &
+%     \begin{cases}
+%         \frac{\minSign}{3} \le f(Z) + 1 \le \frac{\maxSign}{3} \\
+%         \frac{\minSign}{3} \le f(Y) - 1 \le \frac{\maxSign}{3} \\
+%         \frac{\minSign}{3} \le f(X) + 1 \le \frac{\maxSign}{3} \\
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         \frac{\minSign}{3} - 1\le f(Z) \le \frac{\maxSign}{3} - 1 \\
+%         \frac{\minSign}{3} + 1 \le f(Y) \le \frac{\maxSign}{3} + 1\\
+%         \frac{\minSign}{3} - 1\le f(X) \le \frac{\maxSign}{3} - 1 \\
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         \frac{\minSign}{3} - 1\le 3\cdot Z + \bConst \le \frac{\maxSign}{3} - 1 \\
+%         \frac{\minSign}{3} + 1 \le 3\cdot Y + \bConst \le \frac{\maxSign}{3} + 1\\
+%         \frac{\minSign}{3} - 1\le 3\cdot X + \bConst \le \frac{\maxSign}{3} - 1 \\
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         \frac{\minSign}{3} - 1 - \bConst \le 3\cdot Z \le \frac{\maxSign}{3} - 1 - \bConst \\
+%         \frac{\minSign}{3} + 1 - \bConst \le 3\cdot Y \le \frac{\maxSign}{3} + 1 - \bConst \\
+%         \frac{\minSign}{3} - 1 - \bConst \le 3\cdot X \le \frac{\maxSign}{3} - 1 - \bConst \\
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         -3681 \le Z \le 3599 \\
+%         -3681 \le Y \le 3600 \\
+%         -3681 \le X \le 3599 \\
+%     \end{cases}
+%     && \\
+% \end{flalign*}
+
+% Результат, при подстановке чисел, входящих в ОДЗ, помещается в разрядную сетку БВМ. \\\\
+
+% Если рассматривать все случаи, то получаем следующее: \\
+
+% Учитываем возможное переполнение при сложении/вычитании результатов подпрограмм. \\
+% \begin{flalign*}
+%     & \minSign           \le (f(Z)+1)-(f(Y)-1)   \le \maxSign && \\
+%     & \minSign           \le f(Z)-f(Y)+2         \le \maxSign && \\
+%     & \minSign           \le f(Z)-f(Y)           \le \maxSign - 2 && \\
+%     & \frac{\minSign}{2} \le \frac{f(Z)-f(Y)}{2} \le \frac{\maxSign - 2}{2} && \\
+%     &
+%     \begin{cases}
+%         f(Z) \in [-16384; 16382] \\
+%         f(Y) \in [-16382; 16384]
+%     \end{cases}
+%     &&
+% \end{flalign*}
+% Учитываем возможное переполнение при прибавлении/вычитании 1 к результату подпрограммы.
+% С учётом предыдущих ограничений. \\
+% \begin{flalign*}
+%     &
+%     \begin{cases}
+%         \minSign \le f(X) \le \maxSign - 1 \\
+%         -16384 \le f(Z) \le 16382 - 1 \\
+%         -16382 + 1 \le f(Y) \le 16384
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         \frac{\minSign}{3} \le X \le \frac{\maxSign - 1 - \bConst}{3} \\
+%         \frac{-16384}{3}   \le Z \le \frac{16382 - 1 - \bConst}{3} \\
+%         \frac{-16381}{3}   \le Y \le \frac{16384 - \bConst}{3}
+%     \end{cases}
+%     && \\
+%     &
+%     \begin{cases}
+%         -10922 \le X \le 10880  \\
+%         -5461  \le Z \le 5419  \\
+%         -5460  \le Y \le 5420  \\
+%     \end{cases}
+%     &&
+% \end{flalign*}
+% \begin{enumerate}
+%     \item Если $X, Y, Z \in [\minSign; \aConst) \cup (0;\maxSign]:$
+%         \begin{flalign*}
+%              & R = 3\cdot(Z - Y + X) + \bConst + 3 && \\
+%              & \minSign \le 3\cdot(Z - Y + X) + 125 \le \maxSign && \\
+%              & -10964   \le (Z - Y + X)             \le 10880 && \\
+%              & -3654    \le \frac{Z - Y + X}{3}     \le 3626 && \\
+% 			\
+%              & Z, -Y, X \in [-3654; 3626] && \\
+%              & Z, -Y, X \in [-3654; \aConst) \cup (0; 3626] && \\
+%              & \text{гарантирует отсутсвие переполнения } &&
+%         \end{flalign*}
+%     \item Если $X \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%              & R = 3\cdot(Z - Y) \aConst + 3 && \\
+%              & R = 3\cdot(Z - Y) -2880 && \\
+%              \ 
+%              & \minSign \le 3\cdot(Z - Y) -2880 \le \maxSign && \\
+%              & -9962 \le (Z - Y)         \le 10922 && \\
+%              & -4981 \le \frac{Z - Y}{2} \le 5461 && \\
+%              \
+%              & Z, -Y \in [-4981; 5461] && \\
+%              & \text{таким образом, учитывая ограничения:} &&\\
+%              & Z \in [-4981; \aConst) \cup (0; 5419] && \\
+%              & Y \in [-5420; 0) \cup (2883; 4981] &&
+%         \end{flalign*}
+%     \item Если $Y \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%              & \text{То же, что и в предыдущем} && \\
+%              & \ldots && \\
+%              & Z, X \in [-4981; 5461]  && \\
+%              \
+%              & \text{ таким образом, учитывая ограничения:} &&\\
+%              & Z \in [-4981; \aConst) \cup (0; 5419] && \\
+%              & X \in [-4981; \aConst) \cup (0; 5461] &&
+%         \end{flalign*}
+%     \item Если $Z \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%              & \text{То же, что и в предыдущем} && \\
+%              & \ldots && \\
+%              \
+%              & \text{таким образом, учитывая ограничения:} &&\\
+%              & X \in [-4981; \aConst) \cup (0; 5461] && \\
+%              & Y \in [-5420; 0) \cup (2883; 4981] &&
+%         \end{flalign*}
+%     \item Если $X, Y \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%             & R = 3\cdot Z + \bConst + 3 && \\
+%             & \ldots && \\
+%             & -10964 \le Z \le 10880 && \\
+%             \
+%             & \text{ таким образом, учитывая ограничения:} &&\\
+%             & Z \in [-5461; 5419] \And Z \not\in \constInterval &&
+%         \end{flalign*}
+%     \item Если $Z, Y \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%              & X \in [-10922; 10880] \And X \not\in \constInterval &&
+%         \end{flalign*}
+%     \item Если $X, Z \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%             & R = -3\cdot Y - \bConst + 2\cdot(\aConst) + 3 && \\
+%             & \ldots && \\
+%             & -12884 \le Y \le 8961 &&\\
+%             & \text{ таким образом, учитывая ограничения:} &&\\
+%             & \minSign \le 3\cdot Y + \bConst \le \maxSign &&\\
+%             & \ldots && \\
+%             & Y \in [-10922; 5420] \And Y \not\in \constInterval &&
+%         \end{flalign*}
+%     \item Если $X, Y, Z \in [\aConst; 0]:$
+% 		\begin{flalign*}
+%             & R = \aConst + 3 = -2880 && \\
+%             & \text{переполнения нет}
+%         \end{flalign*}
+% \end{enumerate}
+
+% Итоговое ОДЗ, если рассматривать все случаи: \\
+% \begin{flalign*}
+%     &
+%     \left[
+%     \begin{gathered}
+%         \begin{cases}
+%            X \in [-3654; \aConst) \cup (0; 3626] \\
+%            Y \in [-3626; \aConst) \cup (0; 3654] \\
+%            Z \in [-3654; \aConst) \cup (0; 3626] \\
+%         \end{cases} \hfill \hfill \\
+%         \begin{cases}
+%            X \in \constInterval \\
+%            Y \in [-5420; 0) \cup (2883; 4981] \\
+%            Z \in [-4981; \aConst) \cup (0; 5419] \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in [-4981; \aConst) \cup (0; 5461] \\
+%            Y \in \constInterval \\
+%            Z \in [-4981; \aConst) \cup (0; 5419] \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in [-4981; \aConst) \cup (0; 5461] \\
+%            Y \in [-5420; 0) \cup (2883; 4981] \\
+%            Z \in \constInterval \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in \constInterval \\
+%            Y \in \constInterval \\
+%            Z \in [-5461; \aConst) \cup (0; 5419] \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in [-10922; \aConst) \cup (0; 10880] \\
+%            Y \in \constInterval \\
+%            Z \in \constInterval \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in \constInterval \\
+%            Y \in [-10922; \aConst) \cup (0; 5420] \\
+%            Z \in \constInterval \\
+%         \end{cases} \hfill \\
+%         \begin{cases}
+%            X \in \constInterval \\
+%            X \in \constInterval \\
+%            Z \in \constInterval \\
+%         \end{cases}
+%         \hfill
+%     \end{gathered}
+%     \right.
+%     &
+% \end{flalign*}
+
+% \subsection{График функции}
+% \pgfmathsetmacro{\A}{-2883}
+% \pgfmathsetmacro{\B}{122}
+
+% \begin{tikzpicture}[font=\tiny]
+% \begin{axis}[
+%         axis y line=center,
+%         axis x line=middle, 
+%         axis on top=true,
+%         xmax=1000,
+%         ymax=1000,
+%         extra y ticks = {\A},
+%         extra y tick style = {y tick label style={right, xshift=0.25em}}
+% ] 
+
+% % A should be less than 0.
+% \addplot[domain=-3200:\A, red, samples=10,
+%     ] {x * 3 + \B};
+% \addplot[domain=\A:0, red, samples=10] {\A};
+% \addplot[domain=0:40, red, samples=10] {x * 3 + \B};
+% \end{axis}
+% \end{tikzpicture}
