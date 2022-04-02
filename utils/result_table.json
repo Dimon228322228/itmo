@@ -1,0 +1,158 @@
+{
+  "359": {
+    "instr": "036E",
+    "mnem": "X1",
+    "descr": "Array Address",
+    "comment": ""
+  },
+  "35A": {
+    "instr": "0200",
+    "mnem": "X2",
+    "descr": "Array Counter",
+    "comment": ""
+  },
+  "35B": {
+    "instr": "4000",
+    "mnem": "M",
+    "descr": "Loop Counter",
+    "comment": ""
+  },
+  "35C": {
+    "instr": "0200",
+    "mnem": "R",
+    "descr": "Result",
+    "comment": ""
+  },
+  "35D": {
+    "instr": "0200",
+    "mnem": "CLA",
+    "description": "0 → AC",
+    "comment": "очистка аккумулятора"
+  },
+  "35E": {
+    "instr": "EEFD",
+    "mnem": "ST (IP-3)",
+    "description": "AC → R",
+    "comment": "обнуление результата"
+  },
+  "35F": {
+    "instr": "AF05",
+    "mnem": "LD #5",
+    "description": "5 → AC",
+    "comment": "Установака количества эл-тов массива"
+  },
+  "360": {
+    "instr": "EEFA",
+    "mnem": "ST (IP-6)",
+    "description": "AC → M",
+    "comment": ""
+  },
+  "361": {
+    "instr": "4EF7",
+    "mnem": "ADD (IP-9)",
+    "description": "X1 + AC → AC",
+    "comment": "Запись адреса последнего эл-та массива"
+  },
+  "362": {
+    "instr": "EEF7",
+    "mnem": "ST (IP-9)",
+    "description": "AC → X2",
+    "comment": ""
+  },
+  "363": {
+    "instr": "ABF6",
+    "mnem": "LD (IP-10)-",
+    "description": "MEM(X2) → AC; X2 - 1 → X2",
+    "comment": "Загрузка эл-та массива"
+  },
+  "364": {
+    "instr": "0480",
+    "mnem": "ROR",
+    "description": "AC0 → C, C → AC15",
+    "comment": "Если число не делится на 2 или на 4, то прибавляем 1 к результату"
+  },
+  "365": {
+    "instr": "F405",
+    "mnem": "BHIS IP+5",
+    "description": "IF C == 1",
+    "comment": ""
+  },
+  "366": {
+    "instr": "0480",
+    "mnem": "ROR",
+    "description": "AC0 → C, C → AC15",
+    "comment": ""
+  },
+  "367": {
+    "instr": "F403",
+    "mnem": "BHIS IP+3",
+    "description": "IF C == 1",
+    "comment": ""
+  },
+  "368": {
+    "instr": "0400",
+    "mnem": "ROL",
+    "description": "AC15 → C, C → AC0",
+    "comment": "умножение на 4 ?Зачем?"
+  },
+  "369": {
+    "instr": "0400",
+    "mnem": "ROL",
+    "description": "AC15 → C, C → AC0",
+    "comment": ""
+  },
+  "36A": {
+    "instr": "AAF1",
+    "mnem": "LD (IP-15)+",
+    "description": "MEM(R) → AC;R + 1 → R",
+    "comment": "Увеличение результата на 1"
+  },
+  "36B": {
+    "instr": "835B",
+    "mnem": "LOOP $35B",
+    "description": "LOOP M",
+    "comment": "повторяем цикл М раз"
+  },
+  "36C": {
+    "instr": "CEF6",
+    "mnem": "JUMP (IP-10)",
+    "description": "363 → IP",
+    "comment": ""
+  },
+  "36D": {
+    "instr": "0100",
+    "mnem": "HLT",
+    "description": "останов",
+    "comment": "остановка программы"
+  },
+  "36E": {
+    "instr": "8369",
+    "mnem": "Y1",
+    "descr": "Array Number",
+    "comment": "Элемент массива"
+  },
+  "36F": {
+    "instr": "CE00",
+    "mnem": "Y2",
+    "descr": "Array Number",
+    "comment": "Элемент массива"
+  },
+  "370": {
+    "instr": "0003",
+    "mnem": "Y3",
+    "descr": "Array Number",
+    "comment": "Элемент массива"
+  },
+  "371": {
+    "instr": "F200",
+    "mnem": "Y4",
+    "descr": "Array Number",
+    "comment": "Элемент массива"
+  },
+  "372": {
+    "instr": "F201",
+    "mnem": "Y5",
+    "descr": "Array Number",
+    "comment": "Элемент массива"
+  }
+}
