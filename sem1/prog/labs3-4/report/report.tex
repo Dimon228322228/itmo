@@ -1,0 +1,133 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{forest} 
+
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\usepackage[hidelinks]{hyperref} 
+
+% Poles settings:
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=10mm, head=5mm, foot=9mm]{geometry}
+
+\usepackage{fontspec}
+\setmainfont{FreeSerif}
+\setsansfont{FreeSans}
+\setmonofont{FreeMono}
+
+% Polyglossia:
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\newfontfamily\cyrillicfont{FreeSerif}[Script=Cyrillic]
+
+% Source code blocks
+\usepackage[skins,minted, breakable]{tcolorbox}
+\definecolor{mintedbackground}{rgb}{1,1,1}
+\definecolor{mintedframe}{rgb}{0.70,0.85,0.95}
+
+% Filename extractor
+\makeatletter
+\DeclareRobustCommand{\filename}[1]{%
+ \begingroup
+  % \lstname seems to change hyphens into \textendash
+  \def\textendash{-}%
+  \filename@parse{#1}%
+  \texttt{\filename@base.\filename@ext}%
+ \endgroup
+}
+\makeatother
+
+% Minted conifg
+\setminted[]{
+    % fontfamily=tt,
+    linenos=true,
+    numberblanklines=true,
+    numbersep=5pt,
+    gobble=0,
+    framesep=0mm,
+    funcnamehighlighting=true,
+    tabsize=2,
+    obeytabs=false,
+    mathescape=false
+    samepage=false,
+    showspaces=false,
+    showtabs=false,
+    texcl=false,
+    % baselinestretch=1.2,
+    breaklines=true,
+}
+
+% One line code listing with filename extracted
+\newtcbinputlisting[]{\javacode}[2][]{
+    breakable,
+    enhanced, listing engine=minted, 
+    listing file={#2}, 
+    title=\filename{#2}, 
+    boxsep=0pt,left=5mm,right=0pt,top=2pt,bottom=0pt,
+    minted language=java, 
+    minted options={
+        baselinestretch=0.8,
+        fontsize=\tiny,
+        #1
+    },
+    % minted style=default,
+    overlay={%
+    \begin{tcbclipinterior}
+        \fill[gray!25] (frame.south west) rectangle ([xshift=5mm]frame.north west);
+    \end{tcbclipinterior}
+    },
+    listing only,
+    % title code={\path[dashed](title.south west)--(title.south east);},
+    % frame code={\path[](frame.south west) rectangle (frame.north east);}
+}
+% txt files
+\newtcbinputlisting[]{\sampletext}[2][]{
+    breakable,
+    enhanced, listing engine=minted, 
+    listing file={#2}, 
+    minted language=text, 
+    minted options={
+        fontsize=\tiny
+    },
+    minted style=default,
+    colback=gray!5,colframe=blue!40,
+    overlay={%
+    \begin{tcbclipinterior}
+        \fill[gray!25] (frame.south west) rectangle ([xshift=5mm]frame.north west);
+    \end{tcbclipinterior}
+    },
+    listing only,#1,
+    % title code={\path[dashed](title.south west)--(title.south east);},
+    % frame code={\path[](frame.south west) rectangle (frame.north east);}
+}
+
+\begin{document}
+\input{title}
+
+\tableofcontents
+\vspace{2em}
+\pagebreak{}
+
+\section{Текст задания}
+\input{task_rules.tex}
+\pagebreak
+
+\section{Описание предметной области для варианта 3617.1040}
+\input{task_text.tex}
+\pagebreak
+
+\section{Диаграмма классов объектной модели}
+\input{class_diagram.tex}
+\pagebreak
+
+\section{Исходный код программы}
+\input{source_code.tex}
+
+\section{Результат работы программы}
+\sampletext[]{sample_output.txt}
+
+\section{Выводы по работе}
+\input{conclusions}
+\end{document}
